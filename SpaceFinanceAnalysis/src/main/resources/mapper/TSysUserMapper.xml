@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sfa.dao.TSysUserMapper">
+  <resultMap id="BaseResultMap" type="com.sfa.model.TSysUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="t_user_id" jdbcType="VARCHAR" property="tUserId" />
+    <result column="t_user_name" jdbcType="VARCHAR" property="tUserName" />
+    <result column="t_user_pwd" jdbcType="VARCHAR" property="tUserPwd" />
+    <result column="t_role" jdbcType="VARCHAR" property="tRole" />
+    <result column="t_status" jdbcType="VARCHAR" property="tStatus" />
+  </resultMap>
+  
+  
+  <select id="selectSysUserByNameAndPwd" parameterType="com.sfa.model.TSysUser"
+            resultMap="BaseResultMap">
+        SELECT
+       		t_user_id,t_user_name,t_user_pwd,t_role,t_status
+        FROM
+        	t_sys_user
+        WHERE 1=1
+        AND t_user_name = #{tUserName}
+        AND t_user_pwd = #{tUserPwd}
+    </select>
+</mapper>

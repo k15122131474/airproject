@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sfa.dao.TPersonMapper">
+  <resultMap id="BaseResultMap" type="com.sfa.model.TPerson">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="t_preson_id" jdbcType="VARCHAR" property="tPresonId" />
+    <result column="t_user_id" jdbcType="VARCHAR" property="tUserId" />
+    <result column="t_com_id" jdbcType="VARCHAR" property="tComId" />
+    <result column="t_dic_id" jdbcType="VARCHAR" property="tDicId" />
+    <result column="t_gender" jdbcType="VARCHAR" property="tGender" />
+    <result column="t_mobile" jdbcType="VARCHAR" property="tMobile" />
+    <result column="t_email" jdbcType="VARCHAR" property="tEmail" />
+    <result column="t_cname" jdbcType="VARCHAR" property="tCname" />
+  </resultMap>
+</mapper>

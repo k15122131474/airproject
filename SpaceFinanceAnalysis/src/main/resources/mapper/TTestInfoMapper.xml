@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sfa.dao.TTestInfoMapper">
+  <resultMap id="BaseResultMap" type="com.sfa.model.TTestInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="TEST_STATE" jdbcType="VARCHAR" property="testState" />
+    <result column="TEST_NAME" jdbcType="VARCHAR" property="testName" />
+  </resultMap>
+  
+   <select id="getTestInfoById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+      SELECT
+	   ID,TEST_STATE,STATE_NAME
+      FROM
+	    T_TEST_INFO
+      WHERE 1=1 
+      AND ID=#{id}
+    </select>
+</mapper>
