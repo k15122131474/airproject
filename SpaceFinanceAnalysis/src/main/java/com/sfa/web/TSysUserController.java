@@ -13,6 +13,8 @@ import com.sfa.util.RandomUtils;
 import com.sfa.util.UUID;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -75,6 +77,14 @@ public class TSysUserController {
         } 
     }
     
+    @GetMapping("/userLogout")
+    public Result userLogout(@RequestParam String id,HttpSession session) {
+    	if(DbUtiles.cheackSession(id)) {
+    		DbUtiles.userLogout(id);
+    		return ResultGenerator.genSuccessResult("注销成功");
+    	}
+    	return ResultGenerator.genFailResult("没有找到登陆用户");
+    }
     
     @PostMapping("/delete")
     public Result delete(@RequestParam Integer id) {
