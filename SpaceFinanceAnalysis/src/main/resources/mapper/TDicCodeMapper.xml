@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="t_dic_id" jdbcType="VARCHAR" property="tDicId" />
+    <id column="t_dic_id" jdbcType="INTEGER" property="tDicId" />
     <result column="t_dic_code" jdbcType="VARCHAR" property="tDicCode" />
     <result column="t_name" jdbcType="VARCHAR" property="tName" />
     <result column="t_type" jdbcType="VARCHAR" property="tType" />

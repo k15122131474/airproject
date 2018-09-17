@@ -3,7 +3,6 @@ import com.sfa.core.Result;
 import com.sfa.core.ResultGenerator;
 import com.sfa.model.TDicCode;
 import com.sfa.service.TDicCodeService;
-import com.sfa.util.UUID;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +15,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* Created by CodeGenerator on 2018/09/13.
+* Created by CodeGenerator on 2018/09/17.
 */
 @RestController
 @RequestMapping("/t/dic/code")
@@ -26,13 +25,13 @@ public class TDicCodeController {
 
     @PostMapping("/add")
     public Result add(@RequestBody TDicCode tDicCode) {
-    	tDicCode.settDicId(UUID.randomUUID());
         tDicCodeService.save(tDicCode);
         return ResultGenerator.genSuccessResult();
     }
 
     @PostMapping("/delete")
-    public Result delete(@RequestParam Integer id) {
+    public Result delete(@RequestParam("id") Integer id) {
+  
         tDicCodeService.deleteById(id);
         return ResultGenerator.genSuccessResult();
     }

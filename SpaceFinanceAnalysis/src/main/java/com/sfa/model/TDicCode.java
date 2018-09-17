@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class TDicCode {
     @Id
     @Column(name = "t_dic_id")
-    private String tDicId;
+    private Integer tDicId;
 
     @Column(name = "t_dic_code")
     private String tDicCode;
@@ -20,14 +20,14 @@ public class TDicCode {
     /**
      * @return t_dic_id
      */
-    public String gettDicId() {
+    public Integer gettDicId() {
         return tDicId;
     }
 
     /**
      * @param tDicId
      */
-    public void settDicId(String tDicId) {
+    public void settDicId(Integer tDicId) {
         this.tDicId = tDicId;
     }
 

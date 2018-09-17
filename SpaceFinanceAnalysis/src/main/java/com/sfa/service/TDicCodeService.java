@@ -4,7 +4,7 @@ import com.sfa.core.Service;
 
 
 /**
- * Created by CodeGenerator on 2018/09/13.
+ * Created by CodeGenerator on 2018/09/17.
  */
 public interface TDicCodeService extends Service<TDicCode> {
 
