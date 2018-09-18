@@ -6,6 +6,7 @@ import com.sfa.service.TDicCodeService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +24,7 @@ public class TDicCodeController {
     private TDicCodeService tDicCodeService;
 
     @PostMapping("/add")
-    public Result add(TDicCode tDicCode) {
+    public Result add(@RequestBody TDicCode tDicCode) {
         tDicCodeService.save(tDicCode);
         return ResultGenerator.genSuccessResult();
     }
