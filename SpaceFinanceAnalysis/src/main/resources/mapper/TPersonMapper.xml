@@ -1,17 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sfa.dao.TPersonMapper">
-  <resultMap id="BaseResultMap" type="com.sfa.model.TPerson">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="t_preson_id" jdbcType="VARCHAR" property="tPresonId" />
-    <result column="t_user_id" jdbcType="VARCHAR" property="tUserId" />
-    <result column="t_com_id" jdbcType="VARCHAR" property="tComId" />
-    <result column="t_dic_id" jdbcType="VARCHAR" property="tDicId" />
-    <result column="t_gender" jdbcType="VARCHAR" property="tGender" />
-    <result column="t_mobile" jdbcType="VARCHAR" property="tMobile" />
-    <result column="t_email" jdbcType="VARCHAR" property="tEmail" />
-    <result column="t_cname" jdbcType="VARCHAR" property="tCname" />
-  </resultMap>
+	<resultMap id="BaseResultMap" type="com.sfa.model.TPerson">
+		<!-- WARNING - @mbg.generated -->
+		<id column="t_preson_id" jdbcType="VARCHAR" property="tPresonId" />
+		<result column="t_user_id" jdbcType="VARCHAR" property="tUserId" />
+		<result column="t_com_id" jdbcType="VARCHAR" property="tComId" />
+		<result column="t_dic_id" jdbcType="VARCHAR" property="tDicId" />
+		<result column="t_gender" jdbcType="VARCHAR" property="tGender" />
+		<result column="t_mobile" jdbcType="VARCHAR" property="tMobile" />
+		<result column="t_email" jdbcType="VARCHAR" property="tEmail" />
+		<result column="t_cname" jdbcType="VARCHAR" property="tCname" />
+	</resultMap>
+	<resultMap id="UserResultMap" type="com.sfa.model.TSysUser">
+		<!-- WARNING - @mbg.generated -->
+		<id column="t_user_id" jdbcType="VARCHAR" property="tUserId" />
+		<result column="t_user_name" jdbcType="VARCHAR" property="tUserName" />
+		<result column="t_user_pwd" jdbcType="VARCHAR" property="tUserPwd" />
+		<result column="t_role" jdbcType="VARCHAR" property="tRole" />
+		<result column="t_status" jdbcType="VARCHAR" property="tStatus" />
+	</resultMap>
+	<resultMap id="UserInfoMap" type="com.sfa.model.UserInfo">
+		<id column="t_preson_id" jdbcType="VARCHAR" property="id" />
+		<result column="t_user_id" jdbcType="VARCHAR" property="tUserId" />
+		<result column="t_user_name" jdbcType="VARCHAR" property="tUserName" />
+		<result column="t_user_pwd" jdbcType="VARCHAR" property="pwd" />
+		<result column="t_role" jdbcType="VARCHAR" property="tRole" />
+		<result column="t_status" jdbcType="VARCHAR" property="tStatus" />
+		<result column="t_gender" jdbcType="VARCHAR" property="tGender" />
+		<result column="t_mobile" jdbcType="VARCHAR" property="tMobile" />
+		<result column="t_email" jdbcType="VARCHAR" property="tEmail" />
+		<result column="t_cname" jdbcType="VARCHAR" property="tCname" />
+	</resultMap>
+	<select id="selectByUsername" parameterType="String" resultType="int">
+		select count(*)
+		from t_sys_user
+		where t_user_name=#{username,jdbcType=VARCHAR}
+	</select>
+	<insert id="insertUser" parameterType="com.sfa.model.TSysUser">
+		insert into t_sys_user
+		values(#{tUserId},#{tUserName},#{tUserPwd},#{tRole},#{tStatus})
+	</insert>
+	<insert id="insertPerson" parameterType="com.sfa.model.TPerson">
+		insert into t_person
+		values(#{tPresonId},#{tUserId},#{tComId},#{tDicId},#{tGender},#{tMobile},#{tEmail},#{tCname})
+	</insert>
+	<select id="findPersonById" parameterType="String" resultMap="UserInfoMap">
+		select *
+		from t_person left join t_sys_user on
+		t_person.t_user_id=t_sys_user.t_user_id
+		where
+		t_person.t_preson_id=#{tPersonId}
+	</select>
+	<select id="findPersonByName" parameterType="String" resultMap="UserInfoMap">
+		select *
+		from t_person left join t_sys_user on
+		t_person.t_user_id=t_sys_user.t_user_id
+		where
+		t_person.t_cname=#{tCname}
+	</select>
+	<update id="updataPerson" parameterType="com.sfa.model.TPerson">
+		update t_person
+		<set>
+			<if test="tComId!=null and tComId!=''">
+				t_com_id=#{tComId},
+			</if>
+			<if test="tDicId!=null and tDicId!=''">
+				t_dic_id=#{tDicId},
+			</if>
+			<if test="tGender!=null and tGender!=''">
+				t_gender=#{tGender},
+			</if>
+			<if test="tMobile!=null and tMobile!=''">
+				t_mobile=#{tMobile},
+			</if>
+			<if test="tEmail!=null and tEmail!=''">
+				t_Email=#{tEmail},
+			</if>
+			<if test="tCname!=null and tCname!=''">
+				t_cname=#{tCname},
+			</if>
+		</set>
+		where t_preson_id=#{tPresonId}
+	</update>
+	<update id="updataUser" parameterType="com.sfa.model.TSysUser">
+		update t_sys_user
+		<set>
+			<if test="tUserName!=null and tUserName!=''">
+				t_user_name=#{tUserName},
+			</if>
+			<if test="tUserPwd!=null and tUserPwd!=''">
+				t_user_pwd=#{tUserPwd},
+			</if>
+			<if test="tRole!=null and tRole!=''">
+				t_role=#{tRole},
+			</if>
+			<if test="tStatus!=null and tStatus!=''">
+				t_status=#{tStatus},
+			</if>
+		</set>
+		where t_user_id=#{tUserId}
+	</update>
+	<delete id="deletePersonById" parameterType="String">
+		delete from t_person
+		where t_preson_id=#{tPresonId};
+	</delete>
+	<delete id="deleteUserById" parameterType="String">
+		delete from t_sys_user 
+		where t_user_id=#{tUserId};
+	</delete>
 </mapper>

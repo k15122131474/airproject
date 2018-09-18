@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.sfa.core.Mapper;
 import com.sfa.model.TSysUser;
+import com.sfa.model.UserInfo;
 
 
 /**
@@ -15,4 +16,5 @@ import com.sfa.model.TSysUser;
 public interface TSysUserMapper extends Mapper<TSysUser> {
 	
 	 List<TSysUser> selectSysUserByNameAndPwd(TSysUser tSysUser);
+	 UserInfo selectUserInfoById(String id);
 }

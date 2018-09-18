@@ -2,6 +2,7 @@ package com.sfa.service.impl;
 
 import com.sfa.dao.TSysUserMapper;
 import com.sfa.model.TSysUser;
+import com.sfa.model.UserInfo;
 import com.sfa.service.TSysUserService;
 import com.sfa.util.RandomUtils;
 import com.sfa.util.UUID;
@@ -71,6 +72,16 @@ public class TSysUserServiceImpl extends AbstractService<TSysUser> implements TS
 		}else {
 			return flag;
 		}
+	}
+
+	@Override
+	public UserInfo selectUserInfoId(String id) {
+		if(id!=null) {
+		UserInfo userInfo=tSysUserMapper.selectUserInfoById(id);
+		userInfo.setId(id);
+		return userInfo;
+		}
+		return null;
 	}
 
 }

@@ -111,4 +111,9 @@ public class TSysUserController {
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);
     }
+    @GetMapping("/selectuserbyid")
+    public Result list(@RequestParam String id) {
+    	return ResultGenerator.genSuccessResult(tSysUserService.selectUserInfoId(id));
+    	
+    }
 }
