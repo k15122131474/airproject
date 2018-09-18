@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sfa.dao.TItemInfoMapper">
+  <resultMap id="BaseResultMap" type="com.sfa.model.TItemInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="ITEM_NAME" jdbcType="VARCHAR" property="itemName" />
+    <result column="ITEM_STATE" jdbcType="VARCHAR" property="itemState" />
+  </resultMap>
+</mapper>
