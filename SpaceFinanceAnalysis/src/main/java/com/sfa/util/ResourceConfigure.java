@@ -17,8 +17,8 @@ public interface ResourceConfigure {
     /**
      * 前端服务器地址
      */
-//    String CLIENT_HOST = "http://127.0.0.1:8888";
-    String CLIENT_HOST = "http://192.168.18.91:8080";
+    String CLIENT_HOST = "http://127.0.0.1:8020";
+//    String CLIENT_HOST = "http://192.168.18.91:8080";
 //    String CLIENT_HOST = "http://106.2.4.91:8077";
 //    String CLIENT_HOST = "http://106.2.4.91:9999";
     /**
