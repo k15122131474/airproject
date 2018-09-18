@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sfa.dao.TAttenchmentMapper">
+  <resultMap id="BaseResultMap" type="com.sfa.model.TAttenchment">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="t_attid" jdbcType="INTEGER" property="tAttid" />
+    <result column="t_id" jdbcType="VARCHAR" property="tId" />
+    <result column="t_attname" jdbcType="VARCHAR" property="tAttname" />
+    <result column="t_type" jdbcType="VARCHAR" property="tType" />
+    <result column="t_atturl" jdbcType="VARCHAR" property="tAtturl" />
+  </resultMap>
+</mapper>
