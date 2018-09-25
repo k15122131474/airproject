@@ -1,5 +1,6 @@
 package com.sfa.web;
 import com.sfa.core.Result;
+import tk.mybatis.mapper.entity.Condition;
 import com.sfa.core.ResultGenerator;
 import com.sfa.model.TCompany;
 import com.sfa.service.TCompanyService;
@@ -49,10 +50,23 @@ public class TCompanyController {
     }
 
     @PostMapping("/list")
-    public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
+    public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size,@RequestParam(defaultValue = "null") String s) {
         PageHelper.startPage(page, size);
-        List<TCompany> list = tCompanyService.findAll();
+        List<TCompany> list=null;
+        if(s.equals("null")) {
+        	list = tCompanyService.findAll();
+        }else {
+        	s="%"+s+"%";
+        	Condition condition=new Condition(TCompany.class);
+        	condition.createCriteria()
+        	.orCondition(" t_com_name like ",s)
+        	.orCondition(" t_com_pid like ",s)
+        	.orCondition(" t_address like ",s);
+        	list = tCompanyService.findByCondition(condition);
+        }
+       
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);
     }
+
 }

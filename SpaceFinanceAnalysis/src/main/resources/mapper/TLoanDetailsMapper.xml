@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sfa.dao.TLoanDetailsMapper">
+  <resultMap id="BaseResultMap" type="com.sfa.model.TLoanDetails">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="t_loan_id" jdbcType="VARCHAR" property="tLoanId" />
+    <result column="t_loanout_comid" jdbcType="VARCHAR" property="tLoanoutComid" />
+    <result column="t_loanin_comid" jdbcType="VARCHAR" property="tLoaninComid" />
+    <result column="t_loan_pre_time" jdbcType="VARCHAR" property="tLoanPreTime" />
+    <result column="t_loan_start_time" jdbcType="VARCHAR" property="tLoanStartTime" />
+    <result column="t_loan_num" jdbcType="VARCHAR" property="tLoanNum" />
+    <result column="t_loan_end_time" jdbcType="VARCHAR" property="tLoanEndTime" />
+    <result column="t_warn_days" jdbcType="VARCHAR" property="tWarnDays" />
+    <result column="t_weiyue_num" jdbcType="VARCHAR" property="tWeiyueNum" />
+    <result column="t_lixi" jdbcType="VARCHAR" property="tLixi" />
+    <result column="t_changhuan_total" jdbcType="VARCHAR" property="tChanghuanTotal" />
+    <result column="t_status" jdbcType="VARCHAR" property="tStatus" />
+  </resultMap>
+</mapper>
