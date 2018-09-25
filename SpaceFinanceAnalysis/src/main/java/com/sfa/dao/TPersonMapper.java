@@ -19,4 +19,5 @@ public interface TPersonMapper extends Mapper<TPerson> {
 	public int deletePersonById(String tPersonId);
 	public int deleteUserById(String tUserId);
 	public List<UserInfo> findPersonByName(String tCname);
+	public UserInfo findPersonByUserId(String tUserId);
 }

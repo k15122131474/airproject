@@ -91,12 +91,16 @@ public class TPersonController {
 	public Result getAllPerson() {
 		List<TPerson> list = tPersonService.findAll();
 		return ResultGenerator.genSuccessResult(list);
-
 	}
 
 	@GetMapping("/findInfoById")
 	public Result findInfoById(@RequestParam String tPersonId) {
 		UserInfo userinfo = tPersonService.findPersonById(tPersonId);
+		return ResultGenerator.genSuccessResult(userinfo);
+	}
+	@GetMapping("/findInfoByUserId")
+	public Result findInfoByUserId(@RequestParam String tUserId) {
+		UserInfo userinfo = tPersonService.findPersonByUserId(tUserId);
 		return ResultGenerator.genSuccessResult(userinfo);
 	}
 

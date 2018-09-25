@@ -8,12 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import com.sfa.util.picId;
 
 @Controller
 @RequestMapping("/t/win")
@@ -29,18 +32,24 @@ public class WenJian {
     /**
      * 实现文件上传
      * */
+    @PostMapping("fileName")
+    @ResponseBody
+    public String fileName(String userId) {
+    	picId.picId=userId;
+    	return "success";
+    }
     @PostMapping("fileUpload")
-    @ResponseBody 
-    public String fileUpload(@RequestParam("fileName") MultipartFile file){
-        if(file.isEmpty()){
+    @ResponseBody
+    public String fileUpload(MultipartFile file){
+    	if(file==null){
             return "false";
         }
         String fileName = file.getOriginalFilename();
         int size = (int) file.getSize();
         System.out.println(fileName + "-->" + size);
         
-        String path = "F:/test" ;
-        File dest = new File(path + "/" + fileName);
+        String path = "E:/isoft/gitclone/SFAWeb/SFAWeb/SFAWeb/img/headpic" ;
+        File dest = new File(path + "/" + picId.picId+".jpg");
         if(!dest.getParentFile().exists()){ //判断文件父目录是否存在
             dest.getParentFile().mkdir();
         }

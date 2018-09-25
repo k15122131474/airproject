@@ -27,4 +27,6 @@ public interface TPersonService extends Service<TPerson> {
 	int deleteUserInfo(TPerson tperson);
 
 	List<UserInfo> findPersonByName(String tCname);
+
+	UserInfo findPersonByUserId(String tUserId);
 }

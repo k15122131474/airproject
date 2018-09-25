@@ -52,6 +52,13 @@
 		where
 		t_person.t_preson_id=#{tPersonId}
 	</select>
+	<select id="findPersonByUserId" parameterType="String" resultMap="UserInfoMap">
+		select *
+		from t_person left join t_sys_user on
+		t_person.t_user_id=t_sys_user.t_user_id
+		where
+		t_person.t_user_id=#{tUserId}
+	</select>
 	<select id="findPersonByName" parameterType="String" resultMap="UserInfoMap">
 		select *
 		from t_person left join t_sys_user on

@@ -91,4 +91,10 @@ public class TPersonServiceImpl extends AbstractService<TPerson> implements TPer
 		return uinfo;
 	}
 
+	@Override
+	public UserInfo findPersonByUserId(String tUserId) {
+		UserInfo uinfo=tPersonMapper.findPersonByUserId(tUserId);
+		return uinfo;
+	}
+
 }
