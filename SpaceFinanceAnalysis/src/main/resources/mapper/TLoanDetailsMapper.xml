@@ -37,20 +37,20 @@
     <result column="t_changhuan_total" jdbcType="VARCHAR" property="tChanghuanTotal" />
     <result column="t_status" jdbcType="VARCHAR" property="tStatus" />
   </resultMap>
-  <select id="selectLoanOut" parameterType="Integer" resultMap="LoanResultMap">
+  <select id="selectLoanOut" parameterType="String" resultMap="LoanResultMap">
   		select t_loan_id,outCompany.t_com_name as t_loanout_comname,inCompany.t_com_name as t_loanin_comname,
   		t_loan_pre_time,t_loan_start_time,t_loan_num,t_loan_end_time,t_warn_days,t_weiyue_num,t_lixi,
   		t_changhuan_total,t_status
   		from t_loan_details left join t_company as inCompany on t_loan_details.t_loanin_comid=inCompany.t_com_id
-		left join t_company as outCompany on t_loan_details.t_loanin_comid=outCompany.t_com_id
-		where t_loanout_comid=#{tLoanoutComid}  		
+		left join t_company as outCompany on t_loan_details.t_loanout_comid=outCompany.t_com_id
+		where outCompany.t_com_name=#{tLoanoutComid}  		
   </select>
-  <select id="selectLoanIn" parameterType="Integer" resultMap="LoanResultMap">
+  <select id="selectLoanIn" parameterType="String" resultMap="LoanResultMap">
   		select t_loan_id,outCompany.t_com_name as t_loanout_comname,inCompany.t_com_name as t_loanin_comname,
   		t_loan_pre_time,t_loan_start_time,t_loan_num,t_loan_end_time,t_warn_days,t_weiyue_num,t_lixi,
   		t_changhuan_total,t_status
   		from t_loan_details left join t_company as inCompany on t_loan_details.t_loanin_comid=inCompany.t_com_id
-		left join t_company as outCompany on t_loan_details.t_loanin_comid=outCompany.t_com_id
-		where t_loanin_comid=#{tLoanoutComid}  		
+		left join t_company as outCompany on t_loan_details.t_loanout_comid=outCompany.t_com_id
+		where inCompany.t_com_name=#{tLoanoutComid}  		
   </select>
 </mapper>

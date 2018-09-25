@@ -57,7 +57,7 @@ public class TLoanDetailsController {
 	}
 
 	@PostMapping("/loanout")
-	public Result loanout(@RequestParam Integer tLoanoutComid) {
+	public Result loanout(@RequestParam String tLoanoutComid) {
 		if (tLoanoutComid == null) {
 			return ResultGenerator.genFailResult("查询失败");
 		} else {
@@ -66,7 +66,7 @@ public class TLoanDetailsController {
 		}
 	}
 	@PostMapping("/loanin")
-	public Result loanin(@RequestParam Integer tLoaninComid) {
+	public Result loanin(@RequestParam String tLoaninComid) {
 		if (tLoaninComid == null) {
 			return ResultGenerator.genFailResult("查询失败");
 		} else {

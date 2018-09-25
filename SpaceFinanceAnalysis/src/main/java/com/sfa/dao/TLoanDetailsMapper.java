@@ -8,6 +8,6 @@ import com.sfa.model.TLoanDetails;
 
 public interface TLoanDetailsMapper extends Mapper<TLoanDetails> {
 
-	List<LoanResult> selectLoanOut(Integer tLoanoutComid);
-	List<LoanResult> selectLoanIn(Integer tLoaninComid);
+	List<LoanResult> selectLoanOut(String tLoanoutComid);
+	List<LoanResult> selectLoanIn(String tLoaninComid);
 }

@@ -12,7 +12,7 @@ import com.sfa.core.Service;
  */
 public interface TLoanDetailsService extends Service<TLoanDetails> {
 
-	List<LoanResult> selectloanout(Integer tLoanoutComid);
-	List<LoanResult> selectloanin(Integer tLoaninComid);
+	List<LoanResult> selectloanout(String tLoanoutComid);
+	List<LoanResult> selectloanin(String tLoaninComid);
 
 }

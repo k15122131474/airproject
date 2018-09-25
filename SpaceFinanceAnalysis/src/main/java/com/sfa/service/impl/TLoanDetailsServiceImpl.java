@@ -22,12 +22,12 @@ public class TLoanDetailsServiceImpl extends AbstractService<TLoanDetails> imple
 	private TLoanDetailsMapper tLoanDetailsMapper;
 
 	@Override
-	public List<LoanResult> selectloanout(Integer tLoanoutComid) {
+	public List<LoanResult> selectloanout(String tLoanoutComid) {
 		List<LoanResult> rs = tLoanDetailsMapper.selectLoanOut(tLoanoutComid);
 		return rs;
 	}
 	@Override
-	public List<LoanResult> selectloanin(Integer tLoaninComid) {
+	public List<LoanResult> selectloanin(String tLoaninComid) {
 		List<LoanResult> rs = tLoanDetailsMapper.selectLoanIn(tLoaninComid);
 		return rs;
 	}
