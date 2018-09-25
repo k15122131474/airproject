@@ -5,9 +5,9 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="t_loan_id" jdbcType="VARCHAR" property="tLoanId" />
-    <result column="t_loanout_comid" jdbcType="VARCHAR" property="tLoanoutComid" />
-    <result column="t_loanin_comid" jdbcType="VARCHAR" property="tLoaninComid" />
+    <id column="t_loan_id" jdbcType="INTEGER" property="tLoanId" />
+    <result column="t_loanout_comid" jdbcType="INTEGER" property="tLoanoutComid" />
+    <result column="t_loanin_comid" jdbcType="INTEGER" property="tLoaninComid" />
     <result column="t_loan_pre_time" jdbcType="VARCHAR" property="tLoanPreTime" />
     <result column="t_loan_start_time" jdbcType="VARCHAR" property="tLoanStartTime" />
     <result column="t_loan_num" jdbcType="VARCHAR" property="tLoanNum" />
@@ -18,4 +18,39 @@
     <result column="t_changhuan_total" jdbcType="VARCHAR" property="tChanghuanTotal" />
     <result column="t_status" jdbcType="VARCHAR" property="tStatus" />
   </resultMap>
+  <resultMap id="LoanResultMap" type="com.sfa.model.LoanResult">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="t_loan_id" jdbcType="INTEGER" property="tLoanId" />
+    <result column="t_loanout_comname" jdbcType="VARCHAR" property="tLoanoutComName" />
+    <result column="t_loanin_comname" jdbcType="VARCHAR" property="tLoaninComName" />
+    <result column="t_loanin_comid" jdbcType="INTEGER" property="tLoanoutComid" />
+    <result column="t_loanout_comid" jdbcType="INTEGER" property="tLoaninComid" />
+    <result column="t_loan_pre_time" jdbcType="VARCHAR" property="tLoanPreTime" />
+    <result column="t_loan_start_time" jdbcType="VARCHAR" property="tLoanStartTime" />
+    <result column="t_loan_num" jdbcType="VARCHAR" property="tLoanNum" />
+    <result column="t_loan_end_time" jdbcType="VARCHAR" property="tLoanEndTime" />
+    <result column="t_warn_days" jdbcType="VARCHAR" property="tWarnDays" />
+    <result column="t_weiyue_num" jdbcType="VARCHAR" property="tWeiyueNum" />
+    <result column="t_lixi" jdbcType="VARCHAR" property="tLixi" />
+    <result column="t_changhuan_total" jdbcType="VARCHAR" property="tChanghuanTotal" />
+    <result column="t_status" jdbcType="VARCHAR" property="tStatus" />
+  </resultMap>
+  <select id="selectLoanOut" parameterType="Integer" resultMap="LoanResultMap">
+  		select t_loan_id,outCompany.t_com_name as t_loanout_comname,inCompany.t_com_name as t_loanin_comname,
+  		t_loan_pre_time,t_loan_start_time,t_loan_num,t_loan_end_time,t_warn_days,t_weiyue_num,t_lixi,
+  		t_changhuan_total,t_status
+  		from t_loan_details left join t_company as inCompany on t_loan_details.t_loanin_comid=inCompany.t_com_id
+		left join t_company as outCompany on t_loan_details.t_loanin_comid=outCompany.t_com_id
+		where t_loanout_comid=#{tLoanoutComid}  		
+  </select>
+  <select id="selectLoanIn" parameterType="Integer" resultMap="LoanResultMap">
+  		select t_loan_id,outCompany.t_com_name as t_loanout_comname,inCompany.t_com_name as t_loanin_comname,
+  		t_loan_pre_time,t_loan_start_time,t_loan_num,t_loan_end_time,t_warn_days,t_weiyue_num,t_lixi,
+  		t_changhuan_total,t_status
+  		from t_loan_details left join t_company as inCompany on t_loan_details.t_loanin_comid=inCompany.t_com_id
+		left join t_company as outCompany on t_loan_details.t_loanin_comid=outCompany.t_com_id
+		where t_loanin_comid=#{tLoanoutComid}  		
+  </select>
 </mapper>

@@ -6,13 +6,13 @@ import javax.persistence.*;
 public class TLoanDetails {
     @Id
     @Column(name = "t_loan_id")
-    private String tLoanId;
+    private Integer tLoanId;
 
     @Column(name = "t_loanout_comid")
-    private String tLoanoutComid;
+    private Integer tLoanoutComid;
 
     @Column(name = "t_loanin_comid")
-    private String tLoaninComid;
+    private Integer tLoaninComid;
 
     @Column(name = "t_loan_pre_time")
     private String tLoanPreTime;
@@ -44,42 +44,42 @@ public class TLoanDetails {
     /**
      * @return t_loan_id
      */
-    public String gettLoanId() {
+    public Integer gettLoanId() {
         return tLoanId;
     }
 
     /**
      * @param tLoanId
      */
-    public void settLoanId(String tLoanId) {
+    public void settLoanId(Integer tLoanId) {
         this.tLoanId = tLoanId;
     }
 
     /**
      * @return t_loanout_comid
      */
-    public String gettLoanoutComid() {
+    public Integer gettLoanoutComid() {
         return tLoanoutComid;
     }
 
     /**
      * @param tLoanoutComid
      */
-    public void settLoanoutComid(String tLoanoutComid) {
+    public void settLoanoutComid(Integer tLoanoutComid) {
         this.tLoanoutComid = tLoanoutComid;
     }
 
     /**
      * @return t_loanin_comid
      */
-    public String gettLoaninComid() {
+    public Integer gettLoaninComid() {
         return tLoaninComid;
     }
 
     /**
      * @param tLoaninComid
      */
-    public void settLoaninComid(String tLoaninComid) {
+    public void settLoaninComid(Integer tLoaninComid) {
         this.tLoaninComid = tLoaninComid;
     }
 
