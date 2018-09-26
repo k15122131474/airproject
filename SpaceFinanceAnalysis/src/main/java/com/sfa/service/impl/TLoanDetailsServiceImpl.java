@@ -31,5 +31,11 @@ public class TLoanDetailsServiceImpl extends AbstractService<TLoanDetails> imple
 		List<LoanResult> rs = tLoanDetailsMapper.selectLoanIn(tLoaninComid);
 		return rs;
 	}
+	@Override
+	public int selectCompany(String outcompany) {
+		int flage=-1;
+		flage=tLoanDetailsMapper.selectCompany(outcompany);
+		return flage;
+	}
 
 }

@@ -10,4 +10,5 @@ public interface TLoanDetailsMapper extends Mapper<TLoanDetails> {
 
 	List<LoanResult> selectLoanOut(String tLoanoutComid);
 	List<LoanResult> selectLoanIn(String tLoaninComid);
+	int selectCompany(String outcompany);
 }

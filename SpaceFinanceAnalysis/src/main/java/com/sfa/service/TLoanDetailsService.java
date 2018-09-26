@@ -14,5 +14,6 @@ public interface TLoanDetailsService extends Service<TLoanDetails> {
 
 	List<LoanResult> selectloanout(String tLoanoutComid);
 	List<LoanResult> selectloanin(String tLoaninComid);
+	int selectCompany(String outcompany);
 
 }

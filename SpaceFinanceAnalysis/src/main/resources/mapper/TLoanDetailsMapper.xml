@@ -53,4 +53,9 @@
 		left join t_company as outCompany on t_loan_details.t_loanout_comid=outCompany.t_com_id
 		where inCompany.t_com_name=#{tLoanoutComid}  		
   </select>
+  <select id="selectCompany" parameterType="String" resultType="integer">
+  	select  t_com_id
+  	from t_company
+  	where t_com_name=#{outcompany}
+  </select>
 </mapper>
