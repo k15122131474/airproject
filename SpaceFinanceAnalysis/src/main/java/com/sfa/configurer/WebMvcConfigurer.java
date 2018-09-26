@@ -187,7 +187,7 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
     }
 
     private void responseResult(HttpServletResponse response, Result result) {
-        response.setHeader("Access-Control-Allow-Origin", ResourceConfigure.CLIENT_HOST);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setCharacterEncoding("UTF-8");
         response.setHeader("Content-type", "application/json;charset=UTF-8");
