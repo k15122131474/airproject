@@ -11,6 +11,7 @@ public class UserInfo {
 	private String tGender;
 	private String tRole;
 	private String tStatus;
+	
     public String getId() {
 		return id;
 	}

@@ -25,7 +25,7 @@ public class TLoanDetailsController {
 	private TLoanDetailsService tLoanDetailsService;
 
 	@PostMapping("/add")
-	public Result add(TLoanDetails tLoanDetails) {
+	public Result add(TLoanDetails tLoanDetails) {	
 		tLoanDetailsService.save(tLoanDetails);
 		return ResultGenerator.genSuccessResult();
 	}
