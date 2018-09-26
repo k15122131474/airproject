@@ -115,5 +115,5 @@ public class TSysUserController {
     public Result list(@RequestParam String id) {
     	return ResultGenerator.genSuccessResult(tSysUserService.selectUserInfoId(id));
     	
-    }
+   	}
 }

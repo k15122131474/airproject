@@ -9,6 +9,8 @@ import com.sfa.service.TLoanDetailsService;
 import com.sfa.util.UUID;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -93,7 +95,7 @@ public class TLoanDetailsController {
 		}
 		tld.settLoaninComid(flagein);
 		tld.settLoanoutComid(flageout);
-		tld.settStatus("进行中");
+		tld.settStatus("审核中");
 		tld.settWeiyueNum(info.getWeiyue());
 		tld.settLixi(info.getLixi());
 		tld.settLoanEndTime(info.getStarttime());
@@ -110,5 +112,23 @@ public class TLoanDetailsController {
 		return ResultGenerator.genSuccessResult("贷款成功");
 	}
 	
-
+	@GetMapping("/getCompanyById")
+	public Result getCompanyById(@RequestParam String userId) {
+		if(userId==null) {
+			return ResultGenerator.genFailResult(null);
+		}
+		String rs=tLoanDetailsService.selectCompanyById(userId);//rs为返回的公司名称
+		if(rs==null) {
+			return ResultGenerator.genFailResult(null);
+		}
+		return ResultGenerator.genSuccessResult(rs);
+	}
+	@GetMapping("/shenhe")
+	public Result shenhe(@RequestParam int tLoanId) {
+		int flage=tLoanDetailsService.updataStatus(tLoanId);
+		if(flage>0) {
+			return ResultGenerator.genSuccessResult("修改成功");
+		}
+		return ResultGenerator.genFailResult("修改失败");
+	}
 }

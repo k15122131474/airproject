@@ -5,6 +5,9 @@ import com.sfa.model.LoanResult;
 import com.sfa.model.TLoanDetails;
 import com.sfa.service.TLoanDetailsService;
 import com.sfa.core.AbstractService;
+import com.sfa.core.Result;
+import com.sfa.core.ResultGenerator;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,11 +34,25 @@ public class TLoanDetailsServiceImpl extends AbstractService<TLoanDetails> imple
 		List<LoanResult> rs = tLoanDetailsMapper.selectLoanIn(tLoaninComid);
 		return rs;
 	}
+	
 	@Override
 	public int selectCompany(String outcompany) {
 		int flage=-1;
 		flage=tLoanDetailsMapper.selectCompany(outcompany);
 		return flage;
 	}
+	@Override
+	public String selectCompanyById(String userId) {
+		String comname=tLoanDetailsMapper.selectCompanyById(userId);
+		System.out.println(comname+userId);
+		return comname;
+	}
+	@Override
+	public int updataStatus(int tLoanId) {
+		int flage=0;
+		flage=tLoanDetailsMapper.updataStatus(tLoanId);
+		return flage;
+	}
+
 
 }

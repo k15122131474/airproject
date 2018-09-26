@@ -58,4 +58,14 @@
   	from t_company
   	where t_com_name=#{outcompany}
   </select>
+  <select id="selectCompanyById" parameterType="String" resultType="String">
+  	select  t_com_name
+  	from t_person left join t_company on t_person.t_com_id=t_company.t_com_id
+  	where t_person.t_user_id=#{userId}
+  </select>
+  <update id="updataStatus" parameterType="integer">
+  	update t_loan_details
+  	set t_status='进行中'
+  	where t_loan_id=#{tLoanId}
+  </update>
 </mapper>
