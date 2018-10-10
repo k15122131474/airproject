@@ -1,4 +1,4 @@
-package com.sfa.web;
+﻿package com.sfa.web;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import com.sfa.util.picId;
 @RequestMapping("/t/win")
 public class WenJian {
 	/*
-     * 获取file.html页面
+     *  获取file.html页面
      */
 	@PostMapping("file")
     public String file(){
